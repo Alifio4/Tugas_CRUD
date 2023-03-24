@@ -16,8 +16,12 @@ public function index()
 {
     $data["produk"] = Produk::all(); 
     $data2["kategori"] = kategori::all();
-  
-    return view("index",$data,$data2);
+    $data3 ["keranjang"]= DB::table("keranjangs") 
+    ->join ("produks", "keranjangs.produk_id","=","produks.id")
+    ->select (DB::raw('keranjangs.id, produks.nama, produks.harga, keranjangs.qty,  
+    (keranjangs.qty * produks.harga) as jumlah'))->get();
+ 
+    return view("index",$data,$data3);
 }
 
 public function index2()

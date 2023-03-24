@@ -31,6 +31,35 @@
       </table>
     </div>
   </div> 
+  <div class="card">
+    <div class="card-body">
+      {{-- {{ $item->nama }} --- {{ $item->kategori_id }} --}}
+
+      <table class="table" >
+        <thead>
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Nama Produk</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Jenis</th>
+          </tr>
+        </thead>
+        <tbody>
+        @foreach ($keranjang as $no => $items)
+        <tr>
+            <td>{{ $no + 1}}</td>
+            <td>{{ $items->nama}}</td>
+            <td>{{ $items->harga }}</td>
+            <td>{{ $items->qty }}</td>
+            <td>{{ $items->jumlah }}</td>
+            <td><a class="btn btn-outline-warning" href="#" role="button">Check Out</a></td>
+        </tr>
+        @endforeach
+        </tbody>
+        
+      </table>
+    </div>
+  </div> 
 {{-- @endforeach --}}
 
 @endsection
